@@ -1,0 +1,8 @@
+.card {
+  padding: 2rem;
+  overflow: hidden;
+  border: 5px solid transparent;
+  border-radius: 20px;
+  background: transparent;
+  box-shadow: 7px 7px 14px #d0d0d0, -7px -7px 14px #f0f0f0;
+}
