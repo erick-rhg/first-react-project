@@ -1,6 +1,6 @@
 # 🔴 Pokédex Manager
 
-Una aplicación de página única (SPA) construida con **React** y **TypeScript** que permite explorar la primera generación de Pokémon y gestionar un equipo de combate personalizado.
+Una aplicación construida con **React** y **TypeScript** que permite explorar la primera generación de Pokémon y gestionar un equipo de combate personalizado.
 
 🔗 **[Ver Demo en Vivo](https://erick-rhg.github.io/first-react-project/)**
 
