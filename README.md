@@ -1,73 +1,45 @@
-# React + TypeScript + Vite
+# 🔴 Pokédex Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación de página única (SPA) construida con **React** y **TypeScript** que permite explorar la primera generación de Pokémon y gestionar un equipo de combate personalizado.
 
-Currently, two official plugins are available:
+🔗 **[Ver Demo en Vivo](https://erick-rhg.github.io/first-react-project/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Descripción
 
-## React Compiler
+Este es el primer proyecto React realizado. El objetivo principal fue aplicar patrones de arquitectura modernos, separación de responsabilidades y tipado estricto en un entorno realista consumiendo la **PokéAPI**.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+La aplicación permite buscar Pokémon en tiempo real, añadirlos o quitarlos de un equipo (con un límite de 6) y filtrar la vista para gestionar solo los seleccionados.
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologías y Conceptos Aplicados
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Este proyecto es solo **React Core** para poder enteder las bases:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### ⚛️ React & Lógica
+* **Custom Hooks:** Separación de lógica y vista (`usePokemon` para fetching y `useTeam` para reglas de negocio).
+* **Gestión de Estado Compleja:** Manejo de arrays inmutables, actualización funcional de estados y lógica derivada.
+* **Efectos Secundarios:** Consumo de API asíncrona con `useEffect` y `fetch`.
+* **Lifting State Up:** Comunicación entre componentes padres e hijos mediante props y callbacks.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 📐 Arquitectura y Patrones
+* **Patrón de Composición:** Creación de componentes contenedores reutilizables (`Card`) para evitar prop drilling y duplicación de estilos.
+* **Feature-Based Architecture:** Organización de carpetas escalable (`features/`, `components/`, `hooks/`).
+* **Componentes Controlados:** Inputs de búsqueda gestionados por el estado de React.
+* **Separación de Responsabilidades:** Distinción clara entre componentes "Inteligentes" (Lógica) y "Tontos" (UI).
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 🛡️ TypeScript
+* **Interfaces y Tipos:** Definición estricta de contratos de API y Props de componentes.
+* **Data Transformation:** Adaptación de los datos "crudos" de la API a interfaces limpias para el frontend.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 🎨 Estilos
+* **CSS Modules:** Estilos con ámbito local para evitar colisiones y mantener el código modular.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ✨ Funcionalidades
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+* Listado de los 151 Pokémon originales.
+* Buscador en tiempo real (filtrado por nombre).
+* Gestión de equipo (Añadir/Quitar) con persistencia durante el filtrado.
+* Validación de lógica de negocio (Máximo 6 Pokémon por equipo).
+* Modo "Ver solo mi equipo".
+
+**Screenshots:** ![Vista Previa del Proyecto](/public/erick-rhg.github.io_first-react-project.png)
+![Vista Previa de Ver solo Equipo](/public/filter-team.png)
